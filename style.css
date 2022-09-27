@@ -1,0 +1,13 @@
+h1{
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    margin-top: 5%;
+    font: bold;
+    background-color: black;
+    color: white;
+    position: relative;
+    left: 35%;
+    border-radius: 25px;
+}
+
