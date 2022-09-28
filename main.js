@@ -3,21 +3,32 @@ let min=0;
 let sec=0;
 
 const startBtn = document.getElementById("startBtn");
+const watchValue = document.getElementById("watch");
+
+function render() {
+    watchValue.innerText = `${hour} : ${min} : ${sec}`;
+}
 
 function start(){
-    // if(sec==60){
-    //     min++;
-    //     sec=0;
-    // }
-    // else if(min==60){
-    //     hour++;
-    //     min=0;
-    // }
+    const startDate = new Date().getTime();
+    
+   
+    setInterval(() => {
+        const CurrentDate = new Date().getTime();
+        sec = Math.floor((CurrentDate - startDate)/1000);
+        if(sec >= 60){
+            min++;
+            sec=sec-60;
+        }
+        else if(min >= 60){
+            hour++;
+            min=min-60;
+        }
+    
+       
+       render();
 
-    // setInterval(() => {
-    //    sec=sec+1 ;
-    // }, 1000);
-    console.log('start is working!');
+    }, 1);
 }
 
 startBtn.addEventListener("click", start);

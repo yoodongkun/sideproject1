@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>stopwatch</title>
 </head>
 <body>
-    <h1> Stop Watch </h1>
-    <br>
-        <img src="./start.png" alt="image" id="startBtn">
+    <div class="container">
+        <h1> Stop Watch </h1>
+        <div class="watch">
+            <span id="watch">00 : 00 : 00</span>
+        </div>
+        <div class="buttons-container">
+            <img src="./start.png" alt="play" class="button" id="startBtn">
+            <img src="./stop.png" alt="pause" class="button stop" id="stopBtn">
+            <img src="./reset.png" alt="reset" class="button" id="resetBtn">
+        </div>
+    </div>
     
 </body>
 </html>
