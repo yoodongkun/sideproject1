@@ -11,3 +11,7 @@ h1{
     border-radius: 25px;
 }
 
+#startBtn{
+    width: 50%;
+    height: 50%;
+}
