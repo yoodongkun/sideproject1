@@ -1,36 +1,55 @@
 let hour=0;
 let min=0;
 let sec=0;
+let timer=0;
 
 const startBtn = document.getElementById("startBtn");
 const watchValue = document.getElementById("watch");
-
+const stopBtn = document.getElementById("stopBtn");
+const resetBtn = document.getElementById("resetBtn");
 function render() {
-    watchValue.innerText = `${hour} : ${min} : ${sec}`;
+    watchValue.innerText = `${addLeadingZeros(hour,2)} : ${addLeadingZeros(min,2)} : ${addLeadingZeros(sec,2)}`;
 }
+function refreshValues() {
+    hour = Math.floor(timer / (60 * 60));
+    min = Math.floor(timer % (60 * 60) / 60);
+    sec = timer % 60;
+}
+
+function addLeadingZeros(num, totallength){
+    return String(num).padStart(totallength, '0');
+}
+
+
+
+let set;
+let stopTime=0;
 
 function start(){
     const startDate = new Date().getTime();
-    
    
-    setInterval(() => {
+    set = setInterval(() => {
         const CurrentDate = new Date().getTime();
-        sec = Math.floor((CurrentDate - startDate)/1000);
-        if(sec >= 60){
-            min++;
-            sec=sec-60;
-        }
-        else if(min >= 60){
-            hour++;
-            min=min-60;
-        }
-    
-       
+        timer = Math.floor((CurrentDate - startDate)/1000+stopTime);
+       refreshValues();
        render();
 
-    }, 1);
+    }, 1); 
+}
+
+function stop(){
+    clearInterval(set);
+    stopTime = timer;
+}
+
+function reset(){
+    stopTime = 0 ;
+    timer = 0;
+    refreshValues();
+    render();
 }
 
 startBtn.addEventListener("click", start);
-
+stopBtn.addEventListener("click",stop);
+resetBtn.addEventListener("click",reset);
 console.log(sec);
